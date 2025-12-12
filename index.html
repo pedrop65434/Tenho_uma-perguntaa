@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas</title>
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        img {
+            width: 80%;
+            max-width: 350px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .pergunta {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            width: 90%;
+            max-width: 300px;
+            padding: 18px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .sim {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .nao {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #final {
+            font-size: 26px;
+            margin-top: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Foto -->
+    <img src="Foto.jpg" alt="Imagem">
+
+    <!-- Música -->
+    <audio src="Musica.mp3" autoplay loop></audio>
+
+    <div class="container">
+
+        <div id="perguntaBox">
+            <div class="pergunta" id="perguntaTexto">
+                Você gosta de mim?
+            </div>
+
+            <button class="btn sim" onclick="responder('sim')">SIM</button>
+            <button class="btn nao" onclick="responder('nao')">NÃO</button>
+        </div>
+
+        <div id="final"></div>
+
+    </div>
+
+    <script>
+        const perguntas = [
+            "Você gosta de mim?",
+            "Você me acha legal?",
+            "Você gosta de conversar comigo?",
+            "Você teria coragem de me dar um abraço?",
+            "Você me considera especial?"
+        ];
+
+        let indice = 0;
+
+        function responder(res) {
+            if (res === "sim") {
+                indice++;
+
+                if (indice >= perguntas.length) {
+                    document.getElementById("perguntaBox").style.display = "none";
+                    document.getElementById("final").innerHTML = "EU TAMBÉM GOSTO MUITO DE VOCÊ ❤️";
+                    document.getElementById("final").style.display = "block";
+                    return;
+                }
+
+                document.getElementById("perguntaTexto").innerText = perguntas[indice];
+
+            } else {
+                alert("Resposta errada 😡 tente de novo!");
+            }
+        }
+    </script>
+
+</body>
+</html>
